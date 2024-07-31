@@ -1,0 +1,28 @@
+<div class="outer"><div class="inner">
+<h1>詳細画面</h1>
+
+<body style="background-color:#e0ffff;">
+    <div class="font">グループ：</div>
+    <td><%= @task.group.gname %></td>
+    <div class="font">ID：</div>
+    <td><%= @task.group_id %></td><br>
+    <ul>
+        <li><div class="font">日付：</div>
+            <td><%= @task.date %></td><br>
+        </li>
+        <li><div class="font">タイトル：</div>
+            <div class="font2"><%= @task.title %></div><br>
+        </li>
+        <li><div class="font">予定</div>
+            <div class="box2">
+                <p><%= @task.task %></p>
+            </div><br>
+        </li>
+    </ul>
+    <div class="font">作成日：</div>
+    <td><%= @task.created_at.to_s(:datetime_jp) %></td><br>
+    <div class="font">更新日：</div>
+    <td><%= @task.updated_at.to_s(:datetime_jp) %></td><br>
+</body>
+
+</div></div>

@@ -1,0 +1,27 @@
+<div class="outer"><div class="inner">
+<p id="notice"><%= notice %></p>
+<h1>詳細画面</h1>
+
+<body style="background-color:#e0ffff;">
+  <table initialTab="hyo">
+   <tbody>
+     <tr>
+       <th>ID</th>
+       <td><%= @group.id %></td>
+     </tr>
+     <tr>
+       <th>グループ名</th>
+       <td><%= @group.gname %></td>
+     </tr>
+     <tr>
+       <th>作成日時</th>
+       <td><%= @group.created_at.to_s(:datetime_jp) %></td>
+     </tr>
+     <tr>
+       <th>更新日時</th>
+       <td><%= @group.updated_at.to_s(:datetime_jp) %></td>
+     </tr>
+    </tbody>
+  </table>
+</body>
+</div></div>

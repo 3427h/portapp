@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1 class="headline"><a class="no-color">スケジュール管理</a></h1>
+      <% unless request.path == 'login' || request.path == 'top' %>
+        <ul class="nav-list">
+          <% if current_user %>
+            <li class="nav-list-item"><%= link_to 'トップ', top_path, class: "link" %></li>
+            <li class="nav-list-item"><%= link_to '予定管理', tasks_path, class: "link" %></li>
+            <li class="nav-list-item"><%= link_to 'ユーザ管理', users_path, class: "link" %></li>
+            <li class="nav-list-item"><%= link_to 'グループ管理', groups_path, class: "link" %></li>
+            <li class="nav-list-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: "link" %></li>
+            <li class="nav-list2"><h3 style="color: pink">所属グループ：<%= current_user.group.gname %></h3></li>
+            <li class="nav-list2"><h3 style="color: pink">ユーザー名：<%= current_user.name %></h3></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </header>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<body style="background-color:#e0ffff;">
+<div class="outer"><div class="inner">
+
+<h1>スケジュール追加</h1>
+  <ul>
+    <% @task.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<%= form_with model: @task, local: true do |f|%>
+    <div class="field">
+        <%= f.label :date, ('日付') %><br>
+        <%= f.date_field :date %><br>
+    </div>
+    <div class="field">
+        <%= f.label :title, ('タイトル') %><br>
+        <%= f.text_field :title %><br>
+    </div>
+    <div class="field">
+        <%= f.label :task, ('予定') %><br>
+        <%= f.text_area  :task, class: "box2", size: "30x8" %><br>
+    </div>
+    <div class="field">
+        <%= f.label :group_id, ('全体公開') %><br>
+        <%= f.check_box :group_id, {}, 0, current_user.group_id %><br>
+    </div>
+    <div class="actions" style="margin-top:10px">
+        <%= f.submit('登録') %>
+    </div>
+<% end %>
+</body>

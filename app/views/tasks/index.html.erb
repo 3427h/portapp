@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<div class="outer"><div class="inner">
+<div class="show"><h1>予定一覧</h1></div>
+<a><%= link_to '新規登録', new_task_path %></a>
+<body style="background-color:#e0ffff;">
+    <table>
+        <thead>
+            <tr>
+                <th>日付</th>
+                <th>タイトル</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @tasks.each do |t| %>
+                    <tr>
+                        <td><%= t.date %></td>
+                        <td><%= t.title %></td>
+                        <td><%= link_to '詳細', t %>
+                        <%= link_to '編集', edit_task_path(t) %>
+                        <%= link_to '削除', t, method: :delete %></td>
+                    </tr>
+            <% end %>
+        </tbody>
+    </table>
+</body>
+</div></div>

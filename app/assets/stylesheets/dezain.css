@@ -1,0 +1,18 @@
+.link{
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(102, 214, 111);
+  text-decoration: none;
+}
+.link2{
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  color: red;
+}
+a.no-color{
+  color: white;
+}

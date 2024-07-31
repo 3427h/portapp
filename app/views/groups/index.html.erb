@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<div class="outer"><div class="inner">
+<div  class="show"><h1>グループ一覧</h1></div>
+<%= link_to '新規登録', new_group_path %>
+<body style="background-color:#e0ffff;">
+    <table initialTab="hyo">
+      <thead>
+        <tr>
+          <th>グループ名</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @groups.each do |group| %>
+       <tbody>
+         <tr>
+           <td><%= group.gname %></td>
+            <td><%= link_to '詳細', group %>
+            <%= link_to '編集', edit_group_path(group) %>
+            <%= link_to '削除', group, method: :delete, data: { confirm: '削除しますか？' } %></td>
+         </tr>
+       </tbody>
+      <% end %>
+    </table>
+</body>
+</div></div>

@@ -1,0 +1,26 @@
+<div class="outer"><div class="inner">
+<h1>ログイン</h1>
+
+<% if flash[:notice] %>
+  <div class="error"><h2><%= notice %></h2></div>
+<% end %>
+<body style="background-color:#e0ffff;">
+  <%= form_with scope: :session, local: true do |f| %>
+    <div class="field">
+      <%= f.label :name, ('ユーザー名') %><br>
+      <%= f.text_field :name %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, ('パスワード') %><br>
+      <%= f.password_field :password %><br>
+    </div>
+
+    <div class="actions" style="margin-top:10px">
+      <%= f.submit('ログイン') %>
+    </div>
+  <% end %>
+</body>
+
+<div style="margin-top:10px"><%= link_to '新規作成', new_user_path %></div>
+</div></div>

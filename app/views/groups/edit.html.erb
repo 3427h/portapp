@@ -1,0 +1,15 @@
+<div class="outer"><div class="inner">
+<h1>データ更新</h1>
+
+<body style="background-color:#e0ffff;">
+    <%= form_with model: @group, local: true do |f|%>
+      <div class="filed">
+          <%= f.label :gname,('グループ名') %><br>
+          <%= f.text_field :gname %><br>
+      </div>
+      <div class="action" style="margin-top:10px">
+          <%= f.submit ('更新')%>
+      </div>
+  <% end %>
+</body>
+</div></div>

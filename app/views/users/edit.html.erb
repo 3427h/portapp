@@ -1,0 +1,26 @@
+<div class="outer"><div class="inner">
+<h1>データ更新</h1>
+<% if @user.password != @user.password_confirmation %>
+    <div class="error" style="margin: 10px">パスワードの再入力値が一致しません</div>
+<% end %>
+
+<body style="background-color:#e0ffff;">
+    <%= form_with model: @user, local: true do |f|%>
+      <div class="filed">
+          <%= f.label :name,('名前') %><br>
+          <%= f.text_field :name %><br>
+      </div>
+      <div class="filed">
+          <%= f.label :password,('パスワード') %><br>
+          <%= f.password_field :password %><br>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, ('パスワード再確認') %><br>
+        <%= f.password_field :password_confirmation %><br>
+      </div>
+      <div class="action" style="margin-top:10px">
+          <%= f.submit ('更新')%>
+      </div>
+  <% end %>
+</body>
+</div></div>
