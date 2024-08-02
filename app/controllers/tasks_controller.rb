@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
   def index
-    @tasks = current_group.tasks
+    tasks = Task.all
+    @tasks = tasks.select do |t|
+      t.group_id == current_group.id || t.group_id == 100
+    end
   end
 
   def new
@@ -8,17 +11,21 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = current_group.tasks.find(params[:id]) || Group.find(0).tasks.find(params[:id])
-    
-    #Task.find(params[:id]) if Task.group_id == 0
+    @task = current_group.tasks.find_by(id: params[:id])
+    @task ||= Group.find(100).tasks.find(params[:id])
   end
 
   def show
-    @task = current_group.tasks.find(params[:id])
+    @task = current_group.tasks.find_by(id: params[:id])
+    @task ||= Group.find(100).tasks.find(params[:id])
   end
 
   def create
-    @task = current_group.tasks.new(task_params)
+    if task_params[:group_id] == "0"
+      @task = Group.find(100).tasks.new(task_params)
+    else
+      @task = current_group.tasks.new(task_params)
+    end
     if @task.save
       redirect_to tasks_url, notice: "登録しました"
     else
@@ -27,7 +34,8 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = current_group.tasks.find(params[:id])
+    task = current_group.tasks.find_by(id: params[:id])
+    task ||= Group.find(100).tasks.find(params[:id])
     if task.update(task_params)
       redirect_to tasks_url
     else
@@ -36,7 +44,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = current_group.tasks.find(params[:id])
+    task = current_group.tasks.find_by(id: params[:id])
+    task ||= Group.find(100).tasks.find(params[:id])
     task.destroy
     redirect_to tasks_url
   end
