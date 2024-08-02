@@ -3,6 +3,7 @@ table {
     width: 100%; /* 幅 */
   }
   th, td {
+    text-align: center;
     padding: 5px 15px;
     border: solid 1px #a5d1f1;
   }

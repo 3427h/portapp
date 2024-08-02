@@ -8,7 +8,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = current_group.tasks.find(params[:id])
+    @task = current_group.tasks.find(params[:id]) || Group.find(0).tasks.find(params[:id])
+    
+    #Task.find(params[:id]) if Task.group_id == 0
   end
 
   def show

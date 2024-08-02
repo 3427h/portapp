@@ -1,13 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="outer"><div class="inner">
-<h1>ようこそ<%= current_user.name %>さん</h1>
+<h1 style="margin: 200px">ようこそ<%= current_user.name %>さん！</h1>
 <body style="background-color:#e0ffff;">
-<ul class="nav-list">
-    <% if current_user %>
-        <li class="nav-list-item"><%= link_to '予定管理', tasks_path, class: "link2" %></li>
-        <li class="nav-list-item"><%= link_to 'ユーザ管理', users_path, class: "link2" %></li>
-        <li class="nav-list-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: "link2" %></li>
-    <% end %>
-</ul>
 </body>
 </div></div>
