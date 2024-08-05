@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   def index
     tasks = Task.all
     @tasks = tasks.select do |t|
-      t.group_id == current_group.id || t.group_id == 100
+      t.group_id == current_group.id || t.group_id == 1
     end
   end
 
@@ -12,17 +12,17 @@ class TasksController < ApplicationController
 
   def edit
     @task = current_group.tasks.find_by(id: params[:id])
-    @task ||= Group.find(100).tasks.find(params[:id])
+    @task ||= Group.find_by(gname: '全体').tasks.find(params[:id])
   end
 
   def show
     @task = current_group.tasks.find_by(id: params[:id])
-    @task ||= Group.find(100).tasks.find(params[:id])
+    @task ||= Group.find_by(gname: '全体').tasks.find(params[:id])
   end
 
   def create
     if task_params[:group_id] == "0"
-      @task = Group.find(100).tasks.new(task_params)
+      @task = Group.find_by(gname: '全体').tasks.new(task_params)
     else
       @task = current_group.tasks.new(task_params)
     end
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
 
   def update
     task = current_group.tasks.find_by(id: params[:id])
-    task ||= Group.find(100).tasks.find(params[:id])
+    task ||= Group.find_by(gname: '全体').tasks.find(params[:id])
     if task.update(task_params)
       redirect_to tasks_url
     else
@@ -45,7 +45,7 @@ class TasksController < ApplicationController
 
   def destroy
     task = current_group.tasks.find_by(id: params[:id])
-    task ||= Group.find(100).tasks.find(params[:id])
+    task ||= Group.find_by(gname: '全体').tasks.find(params[:id])
     task.destroy
     redirect_to tasks_url
   end
