@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   def index
     tasks = Task.all
     @tasks = tasks.select do |t|
-      t.group_id == current_group.id || t.group_id == 1
+      t.group_id == current_group.id || t.group_id == Group.find_by(gname: '全体').id
     end
   end
 

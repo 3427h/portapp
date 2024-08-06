@@ -13,10 +13,14 @@
       <% @groups.each do |group| %>
        <tbody>
          <tr>
-           <td><%= group.gname %></td>
+          <td><%= group.gname %></td>
+          <% if current_user.name == 'admin' %>
             <td><%= link_to '詳細', group %>
             <%= link_to '編集', edit_group_path(group) %>
             <%= link_to '削除', group, method: :delete, data: { confirm: '削除しますか？' } %></td>
+          <% else %>
+            <td><% link_to '詳細', group %></td>
+          <% end %>
          </tr>
        </tbody>
       <% end %>
